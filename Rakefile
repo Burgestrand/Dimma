@@ -3,7 +3,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "Dimma"
+    gem.name = "dimma"
     gem.summary = "A Ruby library for the Beacon REST API"
     gem.email = "kim@burgestrand.se"
     gem.homepage = "http://github.com/Burgestrand/Dimma"

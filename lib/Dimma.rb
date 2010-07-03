@@ -2,20 +2,29 @@ require 'delegate'
 require 'rest-client'
 require 'json'
 
+# See http://beaconpush.com/guide for specification details.
+#
 module Dimma
+  # The Beacon API (http://beaconpush.com/guide/rest-api) version Dimma conforms to.
   API_VERSION = "1.0.0"
   
-  # @see Dimma::Session
+  # @param (see Session#initialize)
+  # @return (see Session#initialize)
+  # @see Session#initialize
   def Dimma.new(*args)
     Session.new *args
   end
 
   class Session < SimpleDelegator
-    # Initialize the Beacon API resource.
+    # Initialize the Beacon API resource; you get both your API key and secret key from http://beaconpush.com/account/settings.
     #
-    # @param [#to_s] API key
-    # @param [nil, #to_s] Secret key — not required if you have turned off authentication.
-    # @param options (see RestClient#initialize)
+    # @example
+    #   # Specify that no requests must take longer than 10 seconds.
+    #   dimma = Dimma::Session.new "key", "secret", :timeout => 10
+    #
+    # @param [#to_s] key API key.
+    # @param [nil, #to_s] secret Secret key. Set to nil if you have turned off authentication.
+    # @param [Hash] options (see RestClient#initialize)
     def initialize(key, secret = nil, options = {})
       url = "http://api.beaconpush.com/#{Dimma::API_VERSION}/#{key.to_s}/"
       options[:headers] ||= {}
@@ -30,48 +39,52 @@ module Dimma
       JSON.parse(self['users'].get.body)["online"]
     end
 
-    # Send a message to the default channel (see Dimma#channel).
-    def message(msg)
-      channel.message(msg)
+    # Send a message to the 'default' channel.
+    #
+    # @param (see Channel#message)
+    # @return (see Channel#message)
+    # @see Channel#message
+    def message(message)
+      channel.message(message)
     end
     
-    # Retrieve a user by name.
+    # Retrieve a user by name, bound to this Session.
     #
-    # @param [#to_s] Username
-    # @return [RestClient::Resource]
+    # @param [#to_s] name
+    # @return (see Session#initialize)
     def user(name)
       User.new(name, __getobj__)
     end
     
-    # Retrieve a channel by name.
+    # Retrieve a channel by name, bound to this Session.
     # 
-    # @param [#to_s] Channel
-    # @return [RestClient::Resource]
+    # @param [#to_s] name
+    # @return (see Channel#initialize)
     def channel(name = 'default')
       Channel.new(name, __getobj__)
     end
   end
   
   class User < SimpleDelegator
-    # Users’ name.
+    # @return [String]
     attr_reader :name
     
     # Create a new User resource.
     #
-    # @param [#to_s] Username
-    # @param [RestClient::Resource]
+    # @param [#to_s] name
+    # @param [RestClient::Resource] resource An object conformant with the RestClient API.
     def initialize(name, resource)
       __setobj__ resource["users/#{@name = name.to_s}"]
     end
 
-    # True if user is online.
+    # True if the user is online.
     #
     # @return [Boolean]
     def online?
       get.code == 200 rescue false
     end
 
-    # Force logout user.
+    # Force-logout the user.
     #
     # @return [RestClient::Response]
     def logout
@@ -80,35 +93,38 @@ module Dimma
 
     # Send a message to the user.
     #
-    # @param [#to_json] Data to send to the user.
+    # @param [#to_json] message Data to send to the user.
     # @return [RestClient::Response]
     # @raise [RestClient::Exception]
-    def message(msg)
-      post msg.to_json
+    def message(message)
+      post message.to_json
     end
   end
   
   class Channel < SimpleDelegator
-    # Channel name.
+    # @return [String]
     attr_reader :name
     
     # Create a new Channel resource.
+    #
+    # @param [#to_s] name
+    # @param [RestClient::Resource] resource An object conformant with the RestClient API.
     def initialize(name, resource)
       __setobj__ resource["channels/#{@name = name.to_s}"]
     end
 
-    # Sends a message to the channel.
+    # Sends a message to all users in the channel.
     #
-    # @param [#to_json] Data to send to the channel.
+    # @param [#to_json] message Data to send to the channel.
     # @return [RestClient::Response]
     # @raise [RestClient::Exception]
-    def message(msg)
-      post msg.to_json
+    def message(message)
+      post message.to_json
     end
 
-    # Retrieve a list of users in a channel.
+    # Retrieve all users in the channel.
     #
-    # @return [Array] Array of users.
+    # @return [Array<String>] Array of usernames.
     def users
       JSON.parse(get.body)["users"]
     end

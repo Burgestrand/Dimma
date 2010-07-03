@@ -65,7 +65,7 @@ describe Dimma do
     
     it "should have a list of users" do
       channel = @obj.channel
-      channel.users.should == ['Kim']
+      channel.users.map(&:name).should == ['Kim']
       WebMock.should have_requested(:get, channel.url)
     end
   end

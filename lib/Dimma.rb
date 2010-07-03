@@ -124,9 +124,9 @@ module Dimma
 
     # Retrieve all users in the channel.
     #
-    # @return [Array<String>] Array of usernames.
+    # @return [Array<User>] Array of users.
     def users
-      JSON.parse(get.body)["users"]
+      JSON.parse(get.body)["users"].map { |user| User.new(user, __getobj__) }
     end
   end
 end

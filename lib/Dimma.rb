@@ -15,6 +15,7 @@ module Dimma
     Session.new *args
   end
 
+  # Missing method calls are delegated to the underlying RestClient::Resource
   class Session < SimpleDelegator
     # Initialize the Beacon API resource; you get both your API key and secret key from http://beaconpush.com/account/settings.
     #
@@ -65,6 +66,7 @@ module Dimma
     end
   end
   
+  # Missing method calls are delegated to the underlying RestClient::Resource
   class User < SimpleDelegator
     # @return [String]
     attr_reader :name
@@ -101,6 +103,7 @@ module Dimma
     end
   end
   
+  # Missing method calls are delegated to the underlying RestClient::Resource
   class Channel < SimpleDelegator
     # @return [String]
     attr_reader :name

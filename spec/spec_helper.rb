@@ -1,9 +1,9 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'Dimma'
+$:.unshift File.dirname(__FILE__)
+$:.unshift File.expand_path('../../lib', __FILE__)
+require 'dimma'
 require 'spec'
-require 'spec/autorun'
+require 'webmock/rspec'
 
 Spec::Runner.configure do |config|
-  
+  config.include WebMock
 end

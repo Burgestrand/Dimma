@@ -5,14 +5,17 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "Dimma"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "A Ruby library for the Beacon REST API"
     gem.email = "kim@burgestrand.se"
     gem.homepage = "http://github.com/Burgestrand/Dimma"
     gem.authors = ["Kim Burgestrand"]
+    gem.license = "X11 License"
+    gem.add_dependency "rest-client"
+    gem.add_dependency "json"
+    gem.add_development_dependency "webmock"
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.required_ruby_version = '>= 1.8.7'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

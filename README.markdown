@@ -4,9 +4,23 @@ Dimma is a Ruby library aimed to create a simple interface to [Beacons REST API]
 
 How do I use it?
 ----------------
-Excellent question! Here’s how to show site visitors Kim is in da house!
+Excellent question! This is how:
 
-    Dimma.new(API_KEY, SECRET_KEY).message 'Guys! Kim is here, act cool!'
+    # Set up the session.
+    beacon = Dimma.new(API_KEY, SECRET_KEY)
+    
+    # Send a message to all users in the default channel.
+    beacon.message "We now have a total of #{beacon.users} users online!"
+    
+    # Send a message to all users in the “chunky” channel.
+    chunky = beacon.channel "chunky"
+    chunky.message "Chunky bacon!"
+    # Spit out all the channel users in the “chunky” channel.
+    chunky.message "Current users in “chunky” channel: #{chunky.users.map(&:name).join ', '}"
+    
+    # Send a message to a specific user if she is online.
+    candy = beacon.user "godisnappen88"
+    candy.message 'A/S/L?' if candy.online?
 
 Really? Yeah, really! For more advanced usage I suggest you [read the documentation](http://rdoc.info/projects/Burgestrand/Dimma).
 

@@ -24,6 +24,14 @@ Excellent question! This is how:
 
 Really? Yeah, really! For more advanced usage I suggest you [read the documentation](http://rdoc.info/projects/Burgestrand/Dimma).
 
+Yeah, yeah… and installing it?
+------------------------------
+There are several alternatives! Far easiest is if you are using
+[Rubygems](http://rubygems.org/): `gem install dimma`.
+
+If you are not I assume you know what you are doing.
+
 Miscellaneous notes
 -------------------
 - Dimma uses [Semantic Versioning](http://semver.org/) as of version v1.0.0!
+- Dimma is completely *rubygems agnostic* — it assumes all required libraries are available, but does not care how.

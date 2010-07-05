@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kim Burgestrand"]
-  s.date = %q{2010-07-04}
+  s.date = %q{2010-07-05}
   s.email = %q{kim@burgestrand.se}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "dimma.gemspec",
      "lib/Dimma.rb",
-     "spec/Dimma_spec.rb",
+     "spec/dimma_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{A Ruby library for the Beacon REST API}
   s.test_files = [
     "spec/dimma_spec.rb",
@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rest-client>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_development_dependency(%q<webmock>, [">= 0"])

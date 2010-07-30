@@ -1,5 +1,5 @@
 require 'delegate'
-require 'rest-client'
+require 'rest_client'
 require 'json'
 
 # See http://beaconpush.com/guide for specification details.

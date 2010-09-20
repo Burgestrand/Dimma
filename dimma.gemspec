@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dimma}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kim Burgestrand"]
-  s.date = %q{2010-07-05}
+  s.date = %q{2010-09-20}
   s.email = %q{kim@burgestrand.se}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "dimma.gemspec",
-     "lib/Dimma.rb",
+     "lib/dimma.rb",
      "spec/dimma_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"

@@ -52,7 +52,7 @@ module Dimma
     # Retrieve a user by name, bound to this Session.
     #
     # @param [#to_s] name
-    # @return (see Session#initialize)
+    # @return (see User#initialize)
     def user(name)
       User.new(name, __getobj__)
     end

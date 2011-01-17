@@ -22,7 +22,7 @@ Excellent question! This is how:
     candy = beacon.user "godisnappen88"
     candy.message 'A/S/L?' if candy.online?
 
-Really? Yeah, really! For more advanced usage I suggest you [read the documentation](http://rdoc.info/projects/Burgestrand/Dimma).
+Really? Yeah, really! For more advanced usage I suggest you [read the documentation](http://rdoc.info/github/Burgestrand/Dimma/master/frames).
 
 Yeah, yeah… and installing it?
 ------------------------------

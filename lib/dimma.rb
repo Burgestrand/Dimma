@@ -1,3 +1,4 @@
+require 'dimma/version'
 require 'delegate'
 require 'rest_client'
 

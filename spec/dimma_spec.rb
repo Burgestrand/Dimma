@@ -25,6 +25,12 @@ describe Dimma do
     stub_request(:delete, @user.url).to_return(:headers => {:code => 204})
   end
   
+  describe "VERSION" do
+    it "should be defined" do
+      Dimma::VERSION.should be
+    end
+  end
+  
   it "can retrieve a total usercount" do
     @obj.users
     WebMock.should have_requested(:get, @obj['users'].url)

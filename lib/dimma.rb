@@ -20,7 +20,7 @@ module Dimma
   # @return (see Session#initialize)
   # @see Session#initialize
   def Dimma.new(*args)
-    Session.new *args
+    Session.new(*args)
   end
 
   # Missing method calls are delegated to the underlying RestClient::Resource

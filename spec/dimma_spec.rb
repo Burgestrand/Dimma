@@ -1,4 +1,8 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require 'dimma'
+require 'rspec'
+require 'webmock/rspec'
+
+RSpec.configure { |c| c.include WebMock::API }
 
 describe Dimma do
   before do

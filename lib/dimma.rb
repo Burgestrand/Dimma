@@ -1,6 +1,14 @@
 require 'delegate'
 require 'rest_client'
-require 'json'
+
+unless defined?(JSON.parse)
+  begin
+    require 'json'
+  rescue LoadError
+    warn "Dimma requires a json library supplying JSON::parse to be available"
+    raise
+  end
+end
 
 # See http://beaconpush.com/guide for specification details.
 #

@@ -1,9 +1,7 @@
-$:.unshift File.dirname(__FILE__)
-$:.unshift File.expand_path('../../lib', __FILE__)
 require 'dimma'
-require 'spec'
+require 'rspec'
 require 'webmock/rspec'
 
-Spec::Runner.configure do |config|
-  config.include WebMock
+RSpec.configure do |config|
+  config.include WebMock::API
 end

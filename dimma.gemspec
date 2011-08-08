@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
 
   gem.requirements << 'JSON::parse'
   gem.add_dependency 'rest-client'
-  gem.add_development_dependency 'bundler', '~> 1.0.0'
+  gem.add_development_dependency 'bundler', '~> 1.0'
   gem.add_development_dependency 'webmock'
   gem.add_development_dependency 'rspec', '~> 2.0'
   gem.add_development_dependency 'yard'
